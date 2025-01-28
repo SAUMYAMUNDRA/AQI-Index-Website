@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Search with AQI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("flowers\ back.jpg");
+            background-size: cover;
+        }
+
+        .search-container {
+            margin-top: -222px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .search-bar {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .aqi-container {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="search-container">
+    <input type="text" class="search-bar" id="cityInput" placeholder="Enter city name">
+    <button class="search-button" onclick="searchAQI()">Find AQI</button>
+    <div class="aqi-container" id="aqiDisplay"></div>
+</div>
+
+<script>
+    // Object to store AQI values for different cities
+    const aqiData = {};
+
+    async function searchAQI() {
+        try {
+            const cityInput = document.getElementById('cityInput').value;
+
+            // Check if AQI for the city is already stored
+            if (aqiData.hasOwnProperty(cityInput)) {
+                // If yes, use the stored value
+                displayAQI(aqiData[cityInput]);
+            } else {
+                // If not, fetch AQI data from an API (replace with actual data retrieval logic)
+                const aqi = await fetchAQI(cityInput);
+
+                // Store the AQI value
+                aqiData[cityInput] = aqi;
+
+                // Display the AQI value
+                displayAQI(aqi);
+            }
+        } catch (error) {
+            console.error('Error fetching AQI data:', error);
+        }
+    }
+
+    async function fetchAQI(city) {
+        // Simulated API call (replace with actual API call)
+        // For demonstration purposes, we return a random AQI value between 0 and 350
+        return Math.floor(Math.random() * 351);
+    }
+
+    function displayAQI(aqi) {
+        const aqiDisplay = document.getElementById('aqiDisplay');
+    
+        // Display the AQI value
+        aqiDisplay.innerHTML = `<p>AQI: ${aqi}</p>`;
+    
+        // Display a message based on the AQI value
+        if (aqi < 50) {
+            aqiDisplay.innerHTML += '<p>Good Air Quality</p>';
+        } else if (aqi < 100) {
+            aqiDisplay.innerHTML += '<p>Moderate Air Quality</p>';
+        } else if (aqi < 150) {
+            aqiDisplay.innerHTML += '<p>Unhealthy for Sensitive Groups</p>';
+        } else if (aqi < 200) {
+            aqiDisplay.innerHTML += '<p>Unhealthy</p>';
+        } else if (aqi < 300) {
+            aqiDisplay.innerHTML += '<p>Very Unhealthy</p>';
+        } else {
+            aqiDisplay.innerHTML += '<p>Hazardous Air Quality</p>';
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA RELATED TO AQI</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light blue background color */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .paragraph {
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.5em; /* Increase font size for better readability */
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the images horizontally */
+            align-items: center;
+            padding: 20px; /* Add padding to the image container */
+            background-image: url(back.jpg); /* White background for the image container */
+            border-radius: 15px; /* Add border-radius for a rounded appearance */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Adjusted box-shadow for a subtle effect */
+        }
+
+        .image-container img {
+            width: 200px; /* Adjust the width of the images */
+            height: auto;
+            margin: 20px; /* Add margin for spacing between images */
+            border: 2px solid #ddd; /* Light gray border */
+            border-radius: 8px; /* Optional: Add border radius for rounded corners */
+            transition: transform 0.3s ease-in-out; /* Add a smooth transition on hover */
+            cursor: pointer; /* Add cursor pointer to indicate clickable */
+        }
+
+        .image-container img:hover {
+            transform: scale(2.5); /* Scale the image on hover */
+        }
+    </style>
+</head>
+<body>
+    
+    <p class="paragraph">DATA RELATED TO AQI</p>
+
+    <div class="image-container">
+        <!-- Row 1 -->
+        <img src="aqi chart.png" alt="Image 1">
+        <img src="aqi chart.png" alt="">
+        <img src="aqi world.jpeg" alt="Image 3">
+        <img src="aqi chart.png" alt="Image 1">
+        <img src="aqi chart.png" alt="">
+        <img src="aqi world.jpeg" alt="Image 3">
+        <!-- Row 2 -->
+        <img src="aqi chart.png" alt="Image 4">
+        <img src="aqi chart.png" alt="">
+        <img src="aqi chart.png" alt="">
+        <img src="aqi world.jpeg" alt="Image 6">
+        <img src="aqi world.jpeg" alt="Image 6">
+    </div>
+        
+</body>
+</html>

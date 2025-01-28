@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login Redirect</title>
+</head>
+<body>
+    <button onclick="redirectToGoogle()">Sign in with Google</button>
+    
+    <script>
+        function redirectToGoogle() {
+            // Replace YOUR_CLIENT_ID_HERE with your actual Google OAuth client ID
+            var clientId='2975481997-fshcf77iv84v71u4leiu6buejsoj268q.apps.googleusercontent.com';
+            
+            // Replace YOUR_REDIRECT_URI_HERE with the URL to which you want Google to redirect the user after authentication
+            var redirectUri = 'YOUR_REDIRECT_URI_HERE';
+            
+            // Build the authorization URL
+            var authUrl = 'https://accounts.google.com/o/oauth2/auth?';
+            authUrl += 'response_type=code';
+            authUrl += '&client_id=' + encodeURIComponent(clientId);
+            authUrl += '&redirect_uri=' + encodeURIComponent(redirectUri);
+            authUrl += '&scope=email profile';
+            
+            // Redirect the user to the authorization URL
+            window.location.href = authUrl;
+        }
+    </script>
+</body>
+</html>
